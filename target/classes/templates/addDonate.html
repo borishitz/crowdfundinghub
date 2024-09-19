@@ -9,7 +9,7 @@
     <div class="">
       <form  th:action="@{/donate/save}" th:object="${donate}" method="post" style="width: 100%;">
 
-        <div hidden class="form-group">
+        <div hidden class="form-group text-light">
           <label class="text-light">Current User</label>
           <select th:field="*{admin}" class="form-control w-full" required>
             <th:block th:each="admin : ${loginUser}">
@@ -17,8 +17,8 @@
             </th:block>
           </select>
         </div>
-        <div class="form-group">
-          <label >Class Master</label>
+        <div class="form-group text-light">
+          <label >Donation Project</label>
           <!--                    <input type="text" class="form-control" th:field="${newStudent.Clz}" required>-->
           <select th:field="*{donation}" class="form-control" required>
             <th:block th:each="model : ${donation}">
@@ -27,9 +27,9 @@
           </select>
         </div>
 
-        <div class="form-outline mb-4">
+        <div class="form-outline mb-4 text-light">
           <label class="form-label" >donate to this! </label>
-          <input type="number" th:field="*{amount}" class="form-control bg-secondary" />
+          <input type="number" th:field="*{amount}" class="form-control " />
         </div>
 
         <!-- Submit button -->
