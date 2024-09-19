@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<div th:replace="mainHeader :: mainHeader"></div>
+
+<!-- slider section -->
+<section class="slider_section hero_area">
+  <div class="container" style="height: 60vh;">
+    <div class="find_container ">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h3 class="px-5 text-light">Register A New Account</h3>
+
+            <div th:if="${succes}" >
+              <strong>Account Created Successfully</strong>
+              <a href="/login">Login</a>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+              <form th:action = "@{/register-new}" th:object = "${adminDto}" method="POST">
+                <div class="form-group row">
+
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" th:field = "*{firstName}" id="exampleFirstName"
+                           placeholder="First Name">
+                    <div class="alert alert-danger" th:if="${#fields.hasErrors('firstName')}"
+                         th:errors ="*{firstName}">
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <input  type="text" th:field = "*{lastName}" class="form-control form-control-user" id="exampleLastName"
+                           placeholder="Last Name">
+                    <div class="alert alert-danger" th:if = "${#fields.hasErrors('lastName')}"
+                         th:errors = "*{lastName}"
+                    ></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="text" th:field = "*{username}" class="form-control form-control-user mx-3" id="exampleInputEmail"
+                         placeholder="Email Username">
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="password" th:field = "*{password}" class="form-control form-control-user"
+                           id="exampleInputPassword" placeholder="Password">
+
+                    <div class="alert alert-danger" th:if = "${#fields.hasErrors('password')}"
+                         th:errors = "*{password}"
+                    ></div>
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="password" th:field = "*{repeatPassword}" class="form-control form-control-user"
+                           id="exampleRepeatPassword" placeholder="Repeat Password">
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-user btn-block">
+                  Register Account
+                </button>
+                <hr>
+              </form>
+              <hr>
+              <div class="text-center">
+                <a class="small" th:href = "@{/forgot-password}">Forgot Password?</a>
+              </div>
+              <div class="text-center">
+                <a class="small" th:href = "@{/login}">Already have an account? Login!</a>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end slider section -->
+
+<div th:replace="footer :: footer"></div>

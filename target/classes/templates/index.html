@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<div th:replace="mainHeader :: mainHeader"></div>
+
+<section class="job_section layout_padding" style="min-height: 60vh;">
+    <!-- Begin Page Content -->
+    <div class="container">
+
+        <!-- Start Products  -->
+
+            <div class="container">
+                <div class="row">
+                        <div class="col-6 col-lg-3" th:each="model : ${allDonations}">
+                            <div class="card text-center bg-primary text-light">
+                                <div class="card-header">[[${model.name}]]</div>
+                                <div class="card-body">
+                                    <h4 class="card-title">[[${model.toRaiseAmount}]] Fcfa</h4>
+                                    <p class="card-text">[[${model.description}]]</p>
+                                    <a th:href="@{'/donate/add/' + ${model.id}}" class="btn btn-light" data-mdb-ripple-init>Donate</a>
+                                    <a th:if="${session.username != null}" th:href="@{'/donate/view/' + ${model.id}}" class="btn btn-light" data-mdb-ripple-init>View donors</a>
+                                </div>
+                                <div class="card-footer text-muted">Date Line: [[${model.dateLine}]]</div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+
+        <!-- End Products  -->
+
+    </div>
+</section>
+
+<div th:replace="footer :: footer"></div>

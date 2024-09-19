@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<div th:replace="mainHeader :: mainHeader"></div>
+
+<!--   job section-->
+<section style="min-height: 100vh; background-color: #030d47;" class="layout_padding">
+  <div class="container">
+    <div class="">
+      <form  th:action="@{/donate/save}" th:object="${donate}" method="post" style="width: 100%;">
+
+        <div hidden class="form-group">
+          <label class="text-light">Current User</label>
+          <select th:field="*{admin}" class="form-control w-full" required>
+            <th:block th:each="admin : ${loginUser}">
+              <option th:text="${admin.username}" th:value="${admin.id}"/>
+            </th:block>
+          </select>
+        </div>
+        <div class="form-group">
+          <label >Class Master</label>
+          <!--                    <input type="text" class="form-control" th:field="${newStudent.Clz}" required>-->
+          <select th:field="*{donation}" class="form-control" required>
+            <th:block th:each="model : ${donation}">
+              <option th:text="${model.name}" th:value="${model.id}"/>
+            </th:block>
+          </select>
+        </div>
+
+        <div class="form-outline mb-4">
+          <label class="form-label" >donate to this! </label>
+          <input type="number" th:field="*{amount}" class="form-control bg-secondary" />
+        </div>
+
+        <!-- Submit button -->
+        <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-4">Pay now</button>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- end job section -->
+
+<div th:replace="footer :: footer"></div>
