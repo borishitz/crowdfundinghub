@@ -60,9 +60,9 @@
                                 <li class="nav-item" th:if="${session.username == null}">
                                     <a class="nav-link" th:href="@{/register}">Sign up</a>
                                 </li>
-                                <li class="nav-item" th:if="${session.username != null}">
-                                    <a class="nav-link" th:href="@{/donation/profile}">My Donations</a>
-                                </li>
+<!--                                <li class="nav-item" th:if="${session.username != null}">-->
+<!--                                    <a class="nav-link" th:href="@{/donation/profile}">My Donations</a>-->
+<!--                                </li>-->
                                 <li class="nav-item" th:if="${session.username != null}">
                                     <a class="nav-link" th:href="@{/donate/all}">Funded Projects</a>
                                 </li>
